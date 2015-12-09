@@ -1,0 +1,27 @@
+<table class="table table-striped table-sortable">
+    <thead>
+        <tr>
+            <th>
+                Title
+            </th>
+
+            <th>
+                First Name
+            </th>
+
+            <th>
+                Surname
+            </th>
+
+            <th>
+                Action 
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {{#each surveyors as |surveyor|}}
+            {{surveyor-index-table-row surveyor=surveyor deleteSurveyor=(action 'deleteSurveyor')}}
+        {{/each}}
+    </tbody>
+</table>

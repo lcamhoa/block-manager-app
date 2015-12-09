@@ -1,0 +1,30 @@
+<div class="jumbotron p-a m-t-lg">
+    <h1>
+        Surveyors
+    </h1>
+
+    <p class="lead">
+        Here you can view and manage surveyors.
+    </p>
+
+    <hr class="m-y">
+
+    <p class="lead">
+        <button class="btn btn-secondary" data-toggle="modal" data-target="#createSurveyorModal">
+            <span class="fa fa-plus-circle"></span>
+
+            Create
+        </button>
+    </p> 
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            {{surveyor-create-form process=(action 'createSurveyor')}}
+            {{surveyor-edit-form process=(action 'editSurveyor')}}
+            
+            {{surveyor-index-table surveyors=model deleteSurveyor=(action 'deleteSurveyor')}}
+        </div>
+    </div>
+</div>

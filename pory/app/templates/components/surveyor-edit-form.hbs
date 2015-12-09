@@ -1,0 +1,152 @@
+<div id="editSurveyorAlertSuccess" class="{{alertSuccessClass}}" role="alert" hidden>
+    {{alertSuccessMessage}}
+</div>
+
+<div class="modal fade" id="editSurveyorModal" tabindex="-1" role="dialog">
+    <form {{action "validate" on="submit"}} hidden={{messageSent}}>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" area-label="close">
+                        <span class="fa fa-times" aria-hidden="true"></span>
+                        <span class="sr-only">Close</span>
+                    </button>
+
+                    <h4 class="modal-title">
+                        Edit Surveyor
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+                    {{input value=id id="editSurveyorModalId" type="hidden"}}
+
+                    <div class="{{alertErrorClass}}" role="alert">
+                        {{alertErrorMessage}}
+                    </div>
+
+                    <fieldset class="{{titleField}}">
+                        <label for="title">
+                            Title
+                        </label>
+
+                        {{input value=title id="editSurveyorModalTitle" type="text" class=titleInput placeholder="Title"}}
+                    </fieldset>
+
+                    <fieldset class="{{firstNameField}}">
+                        <label for="firstName">
+                            First Name
+                        </label>
+
+                        {{input value=firstName id="editSurveyorModalFirstName" type="text" class=firstNameInput placeholder="First Name"}}
+                    </fieldset>
+
+                    <fieldset class="{{surnameField}}">
+                        <label for="surname">
+                            Surname
+                        </label>
+
+                        {{input value=surname id="editSurveyorModalSurname" type="text" class=surnameInput placeholder="Surname"}}
+                    </fieldset>
+
+                    <fieldset class="{{companyField}}">
+                        <label for="company">
+                            Company
+                        </label>
+
+                        {{input value=company id="editSurveyorModalCompany" type="text" class=companyInput placeholder="Company"}}
+                    </fieldset>
+
+                    <fieldset class="{{telephoneField}}">
+                        <label for="telephone">
+                            Telephone
+                        </label>
+
+                        {{input value=telephone id="editSurveyorModalTelephone" type="text" class=telephoneInput placeholder="Telephone"}}
+                    </fieldset>
+
+                    <fieldset class="{{mobileField}}">
+                        <label for="mobile">
+                            Mobile
+                        </label>
+
+                        {{input value=mobile id="editSurveyorModalMobile" type="text" class=mobileInput placeholder="Mobile"}}
+                    </fieldset>
+
+                    <fieldset class="{{faxField}}">
+                        <label for="fax">
+                            Fax
+                        </label>
+
+                        {{input value=fax id="editSurveyorModalFax" type="text" class=faxInput placeholder="Fax"}}
+                    </fieldset>
+
+                    <fieldset class="{{emailField}}">
+                        <label for="email">
+                            Email
+                        </label>
+
+                        {{input value=email id="editSurveyorModalEmail" type="email" class=emailInput placeholder="Email"}}
+                    </fieldset>
+
+                    <fieldset class="{{houseField}}">
+                        <label for="house">
+                            House
+                        </label>
+
+                        {{input value=house id="editSurveyorModalHouse" type="text" class=houseInput placeholder="House"}}
+                    </fieldset>
+
+                    <fieldset class="{{streetField}}">
+                        <label for="street">
+                            Street
+                        </label>
+
+                        {{input value=street id="editSurveyorModalStreet" type="text" class=streetInput placeholder="Street"}}
+                    </fieldset>
+
+                    <fieldset class="{{localityField}}">
+                        <label for="locality">
+                            Locality
+                        </label>
+
+                        {{input value=locality id="editSurveyorModalLocality" type="text" class=localityInput placeholder="Locality"}}
+                    </fieldset>
+
+                    <fieldset class="{{townField}}">
+                        <label for="town">
+                            Town
+                        </label>
+
+                        {{input value=town id="editSurveyorModalTown" type="text" class=townInput placeholder="Town"}}
+                    </fieldset>
+
+                    <fieldset class="{{countyField}}">
+                        <label for="county">
+                            County
+                        </label>
+
+                        {{input value=county id="editSurveyorModalCounty" type="text" class=countyInput placeholder="County"}}
+                    </fieldset>
+
+                    <fieldset class="{{postcodeField}}">
+                        <label for="postcode">
+                            Postcode
+                        </label>
+
+                        {{input value=postcode id="editSurveyorModalPostcode" type="text" class=postcodeInput placeholder="Postcode"}}
+                    </fieldset>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="btn btn-primary">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

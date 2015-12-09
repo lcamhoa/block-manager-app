@@ -1,0 +1,35 @@
+<td>
+    {{surveyor.title}}
+</td>
+
+<td>
+    {{surveyor.firstName}}
+</td>
+
+<td>
+    {{surveyor.surname}}
+</td>
+
+<td>
+    <div class="btn-group" role="group">
+        <button {{action "editSurveyor" on="click"}} type="button" class="btn btn-primary btn-sm">
+            Edit
+        </button>
+
+        <div class="btn-group" role="group">
+            <button type="button" 
+                    class="btn btn-secondary btn-sm"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false">
+                <span class="fa fa-caret-down"></span>
+            </button>
+
+            <div class="dropdown-menu">
+                <button {{action "deleteSurveyor" on="click"}} type="button" class="dropdown-item">
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
+</td>
