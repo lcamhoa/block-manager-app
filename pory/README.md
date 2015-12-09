@@ -1,4 +1,4 @@
-# Block Management App
+# Block Manager App
 
 This README outlines the details of collaborating on this application.
 
