@@ -7,12 +7,13 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('surveyors');
+  this.route('blocks');
 });
 
 Ember.Router.reopen({
 
     // If the application transitioned scroll to the top of the page
-    didTransition: function(data) 
+    didTransition: function(data)
     {
         // Pass any data on
         this._super(data);
