@@ -22,20 +22,20 @@
                         {{alertErrorMessage}}
                     </div>
 
-                    <fieldset class="form-group">
+                    <fieldset class="{{nameField}}">
                         <label for="name">
                             Name
                         </label>
 
-                        {{input value=name id="createBlockModalName" required="true" type="text" class="form-control" placeholder="Name"}}
+                        {{input value=name id="createBlockModalName" type="text" class=nameInput placeholder="Name"}}
                     </fieldset>
 
-                    <fieldset class="form-group">
+                    <fieldset class="siteField">
                         <label for="site">
                             Site
                         </label>
 
-                        {{input value=site id="createBlockModalSite" type="text" required="true" class="form-control" placeholder="Site"}}
+                        {{input value=site id="createBlockModalSite" type="text"  class=siteInput placeholder="Site"}}
                     </fieldset>
 
                     <fieldset class="form-group">

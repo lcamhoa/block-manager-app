@@ -5,8 +5,16 @@ export default Ember.Component.extend({
     alertErrorMessage: "",
 
     reference: "",
+    referenceField: "form-group",
+    referenceInput: "form-control",
+
     name: "",
+    nameField: "form-group",
+    nameInput: "form-control",
+
     site: "",
+    siteField: "form-group",
+    siteInput: "form-control",
 
     actions: {
         validate()
@@ -14,6 +22,42 @@ export default Ember.Component.extend({
             let reference = Ember.$('#editBlockModalReference').val();
             let name = this.get("name");
             let site = this.get("site");
+
+            // No name was entered
+            if(! name.trim().length) {
+                this.set("alertErrorClass", "alert alert-danger");
+                this.set("alertErrorMessage", "Please enter a name.");
+
+                this.set("nameField", "form-group has-error");
+                this.set("nameInput", "form-control form-control-error");
+
+                Ember.$('#createBlockModalName').focus();
+                return;
+            }
+
+            // They entered their name correctly
+            else {
+                this.set("nameField", "form-group has-success");
+                this.set("nameInput", "form-control form-control-success");
+            }
+
+            // No site was entered
+            if(! site.trim().length) {
+                this.set("alertErrorClass", "alert alert-danger");
+                this.set("alertErrorMessage", "Please enter a site.");
+
+                this.set("siteField", "form-group has-error");
+                this.set("siteInput", "form-control form-control-error");
+
+                Ember.$('#createBlockModalSite').focus();
+                return;
+            }
+
+            // They entered their name correctly
+            else {
+                this.set("siteField", "form-group has-success");
+                this.set("siteInput", "form-control form-control-success");
+            }
 
             // Create a data object containing the form data
             let data = {
@@ -30,12 +74,27 @@ export default Ember.Component.extend({
                 this.set("alertErrorClass", "alert alert-danger");
                 this.set("alertErrorMessage", response.error);
             } else {
+                // Remove any error messages
+                this.set("alertErrorClass", "");
+                this.set("alertErrorMessage", "");
+
                 // Set the success message
                 this.set("alertSuccessClass", "alert alert-success");
                 this.set("alertSuccessMessage", response.success);
 
                 // Show the success message
                 Ember.$('#createBlockorAlertSuccess').attr('hidden', false).fadeIn();
+
+                // Reset the inputs
+                this.set("nameField", "form-group");
+                this.set("nameInput", "form-control");
+
+                this.set("siteField", "form-group");
+                this.set("siteInput", "form-control");
+
+                this.set("name", "");
+                this.set("site", "");
+
                 Ember.$('#createBlockorModal').modal('hide');
 
                 // Reload Tablesorter on any eligible tables
