@@ -4,9 +4,10 @@ export default Ember.Controller.extend({
     actions: {
         createBlock(data)
         {
-            let surveyor = this.store.peekRecord('surveyor', data.reference);
+            let surveyor = this.store.peekRecord('surveyor', data.surveyor);
             let block = this.store.createRecord('block', {
-                reference: surveyor,
+                surveyor: surveyor,
+                reference: data.reference,
                 site: data.site,
                 name: data.name,
                 created: new Date()
@@ -36,13 +37,14 @@ export default Ember.Controller.extend({
         editBlock(data)
         {
             // Find the surveyor
-            let surveyor = this.store.peekRecord('surveyor', data.reference);
+            let surveyor = this.store.peekRecord('surveyor', data.surveyor);
             this.store.findRecord('block', data.id).then(function(block)
             {
                 // Update the block
-                block.set("reference", surveyor);
+                block.set("surveyor", surveyor);
                 block.set("site", data.site);
                 block.set("name", data.name);
+                block.set("reference", data.reference);
 
                 // Save the surveyor
                 block.save();

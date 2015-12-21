@@ -19,10 +19,11 @@ export default Ember.Component.extend({
     actions: {
         validate()
         {
-            let reference = this.get("reference"); // Ember.$('#editBlockModalReference').val();
+            let id = this.get("id");
+            let reference = this.get("reference");
             let name = this.get("name");
             let site = this.get("site");
-
+            let surveyor = this.get("surveyor");
 
             // No name was entered
             if(! name.trim().length) {
@@ -54,17 +55,37 @@ export default Ember.Component.extend({
                 return;
             }
 
-            // They entered their name correctly
+            // They entered their site correctly
             else {
                 this.set("siteField", "form-group has-success");
                 this.set("siteInput", "form-control form-control-success");
             }
 
+            // No reference was entered
+            if(! reference.trim().length) {
+                this.set("alertErrorClass", "alert alert-danger");
+                this.set("alertErrorMessage", "Please enter a reference.");
+
+                this.set("referenceField", "form-group has-error");
+                this.set("referenceInput", "form-control form-control-error");
+
+                Ember.$('#editBlockModalReference').focus();
+                return;
+            }
+
+            // They entered their reference correctly
+            else {
+                this.set("referenceField", "form-group has-success");
+                this.set("referenceInput", "form-control form-control-success");
+            }
+
             // Create a data object containing the form data
             let data = {
+                id: id,
                 reference: reference,
                 name: name,
                 site: site,
+                surveyor: surveyor
             };
 
             // Process the form data
@@ -94,8 +115,12 @@ export default Ember.Component.extend({
                 this.set("siteField", "form-group");
                 this.set("siteInput", "form-control");
 
+                this.set("referenceField", "form-group");
+                this.set("referenceInput", "form-control");
+
                 this.set("name", "");
                 this.set("site", "");
+                this.set("reference", "");
 
                 Ember.$('#editBlockorModal').modal('hide');
 
@@ -116,9 +141,10 @@ export default Ember.Component.extend({
                 }, 2000);
             }
         },
-        changeReference(reference)
+
+        changeSurveyor(surveyor)
         {
-             this.set('reference', reference);
+             this.set('surveyor', surveyor);
         }
     }
 });

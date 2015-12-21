@@ -16,17 +16,24 @@ export default Ember.Component.extend({
         editBlock()
         {
             let block = this.block;
-            let surveyorId = block.get('reference').get('id');
-            let referenceSelectPath = '#editBlockModalReference option[value="' + surveyorId + '"]';
+            let surveyor = block.get('surveyor');
+            let surveyorId = block.get('surveyor').get('id');
+            let surveyorSelectPath = '#editBlockModalSurveyor option[value="' + surveyorId + '"]';
+
+            // dirty data , surveyor firstname is required
+            if (surveyor.get('firstName') === undefined) {
+                surveyorSelectPath = '#editBlockModalSurveyor option:first-child';
+            }
 
             // Set the block's data in the edit block modal
             Ember.$('#ediBlockModalId').val(block.get('id')).trigger('change');
             Ember.$('#editBlockModalName').val(block.get('name')).trigger('change');
             Ember.$('#editBlockModalSite').val(block.get('site')).trigger('change');
+            Ember.$('#editBlockModalReference').val(block.get('reference')).trigger('change');
             Ember.$('#editBlockModalCreated').text(block.get('created'));
 
             //Set the surveyor which block belong to
-            Ember.$(referenceSelectPath).attr('selected',true).trigger('change');
+            Ember.$(surveyorSelectPath).attr('selected',true).trigger('change');
 
             // Show the edit surveyor modal
             Ember.$('#editBlockorModal').modal();

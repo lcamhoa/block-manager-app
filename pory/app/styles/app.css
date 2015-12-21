@@ -58,6 +58,10 @@ th.headerSortUp:after {
     margin-left: 5px;
 }
 
+th.action-buttons {
+    min-width: 110px;
+}
+
 /***********************************
  * Helper Styles
  *

@@ -38,17 +38,24 @@
                         {{input value=site id="createBlockModalSite" type="text"  class=siteInput placeholder="Site"}}
                     </fieldset>
 
-                    <fieldset class="form-group">
+                    <fieldset class="{{referenceField}}">
                         <label for="reference">
                             Reference
                         </label>
 
-                        <select class="form-control" name="editBlockModalReference" value="reference" id="editBlockModalReference">
+                        {{input value=reference id="createBlockModalReference" type="text" class=referenceInput placeholder="Reference"}}
+                    </fieldset>
+
+                    <fieldset class="form-group">
+                        <label for="createBlockModalSurveyor">
+                            Surveyor
+                        </label>
+
+                        <select class="form-control" name="createBlockModalSurveyor" value=surveyor id="createBlockModalSurveyor">
                             {{#each surveyors as |surveyor|}}
                                 <option value="{{surveyor.id}}">{{format-surveyor surveyor}}</option>
                             {{/each}}
                         </select>
-
                     </fieldset>
 
                 </div>

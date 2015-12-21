@@ -19,9 +19,10 @@ export default Ember.Component.extend({
     actions: {
         validate()
         {
-            let reference = Ember.$('#editBlockModalReference').val();
+            let reference = this.get("reference");
             let name = this.get("name");
             let site = this.get("site");
+            let surveyor = Ember.$('#createBlockModalSurveyor').val();
 
             // No name was entered
             if(! name.trim().length) {
@@ -59,11 +60,31 @@ export default Ember.Component.extend({
                 this.set("siteInput", "form-control form-control-success");
             }
 
+            // No reference was entered
+            if(! reference.trim().length) {
+                this.set("alertErrorClass", "alert alert-danger");
+                this.set("alertErrorMessage", "Please enter a reference.");
+
+                this.set("referenceField", "form-group has-error");
+                this.set("referenceInput", "form-control form-control-error");
+
+                Ember.$('#createBlockModalReference').focus();
+                return;
+            }
+
+            // They entered their reference correctly
+            else {
+                this.set("referenceField", "form-group has-success");
+                this.set("referenceInput", "form-control form-control-success");
+            }
+
+
             // Create a data object containing the form data
             let data = {
                 reference: reference,
                 name: name,
                 site: site,
+                surveyor: surveyor
             };
 
             // Process the form data
@@ -92,8 +113,12 @@ export default Ember.Component.extend({
                 this.set("siteField", "form-group");
                 this.set("siteInput", "form-control");
 
+                this.set("referenceField", "form-group");
+                this.set("referenceInput", "form-control");
+
                 this.set("name", "");
                 this.set("site", "");
+                this.set("reference", "");
 
                 Ember.$('#createBlockorModal').modal('hide');
 
