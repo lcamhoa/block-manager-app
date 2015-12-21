@@ -9,7 +9,8 @@ export default Ember.Component.extend({
     site: "",
 
     actions: {
-        validate() {
+        validate()
+        {
             let reference = Ember.$('#editBlockModalReference').val();
             let name = this.get("name");
             let site = this.get("site");
@@ -29,7 +30,6 @@ export default Ember.Component.extend({
                 this.set("alertErrorClass", "alert alert-danger");
                 this.set("alertErrorMessage", response.error);
             } else {
-
                 // Set the success message
                 this.set("alertSuccessClass", "alert alert-success");
                 this.set("alertSuccessMessage", response.success);

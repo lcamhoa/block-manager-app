@@ -9,7 +9,8 @@ export default Ember.Component.extend({
     site: "",
 
     actions: {
-        validate() {
+        validate()
+        {
             let reference = this.get("reference"); // Ember.$('#editBlockModalReference').val();
             let name = this.get("name");
             let site = this.get("site");
@@ -54,7 +55,8 @@ export default Ember.Component.extend({
                 }, 2000);
             }
         },
-        changeReference(reference) {
+        changeReference(reference)
+        {
              this.set('reference', reference);
         }
     }

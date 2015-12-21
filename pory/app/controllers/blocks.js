@@ -43,6 +43,7 @@ export default Ember.Controller.extend({
                 block.set("reference", surveyor);
                 block.set("site", data.site);
                 block.set("name", data.name);
+
                 // Save the surveyor
                 block.save();
             });
