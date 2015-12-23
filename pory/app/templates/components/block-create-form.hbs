@@ -30,7 +30,7 @@
                         {{input value=name id="createBlockModalName" type="text" class=nameInput placeholder="Name"}}
                     </fieldset>
 
-                    <fieldset class="siteField">
+                    <fieldset class="{{siteField}}">
                         <label for="site">
                             Site
                         </label>
@@ -46,14 +46,15 @@
                         {{input value=reference id="createBlockModalReference" type="text" class=referenceInput placeholder="Reference"}}
                     </fieldset>
 
-                    <fieldset class="form-group">
+                    <fieldset class="{{surveyorField}}">
                         <label for="createBlockModalSurveyor">
                             Surveyor
                         </label>
 
-                        <select class="form-control" name="createBlockModalSurveyor" value=surveyor id="createBlockModalSurveyor">
+                        <select class="{{surveyorInput}}" name="createBlockModalSurveyor" value=surveyor id="createBlockModalSurveyor">
+                            <option value="">Select Surveyor..</option>
                             {{#each surveyors as |surveyor|}}
-                                <option value="{{surveyor.id}}">{{format-surveyor surveyor}}</option>
+                                <option value="{{surveyor.id}}">{{surveyor.fullName}}</option>
                             {{/each}}
                         </select>
                     </fieldset>

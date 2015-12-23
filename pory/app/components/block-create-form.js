@@ -16,6 +16,10 @@ export default Ember.Component.extend({
     siteField: "form-group",
     siteInput: "form-control",
 
+    surveyor: "",
+    surveyorField: "form-group",
+    surveyorInput: "form-control",
+
     actions: {
         validate()
         {
@@ -78,6 +82,23 @@ export default Ember.Component.extend({
                 this.set("referenceInput", "form-control form-control-success");
             }
 
+             // No surveyor was selected
+            if(! surveyor.trim().length) {
+                this.set("alertErrorClass", "alert alert-danger");
+                this.set("alertErrorMessage", "Please select a surveyor.");
+
+                this.set("surveyorField", "form-group has-error");
+                this.set("surveyorInput", "form-control form-control-error");
+
+                Ember.$('#createBlockModalSurveyor').focus();
+                return;
+            }
+
+            // They selected a surveyor correctly
+            else {
+                this.set("surveyorField", "form-group has-success");
+                this.set("surveyorInput", "form-control form-control-success");
+            }
 
             // Create a data object containing the form data
             let data = {
@@ -116,9 +137,17 @@ export default Ember.Component.extend({
                 this.set("referenceField", "form-group");
                 this.set("referenceInput", "form-control");
 
+                this.set("surveyorField", "form-group");
+                this.set("surveyorInput", "form-control");
+
                 this.set("name", "");
                 this.set("site", "");
                 this.set("reference", "");
+                this.set("surveyor", "");
+                
+                // Reset surveyor select to default 
+                let surveyorSelectPath = '#createBlockModalSurveyor option[value=""]';
+                Ember.$(surveyorSelectPath).attr('selected',true).trigger('change');
 
                 Ember.$('#createBlockorModal').modal('hide');
 

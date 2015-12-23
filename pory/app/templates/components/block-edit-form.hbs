@@ -46,14 +46,15 @@
                         {{input value=reference id="editBlockModalReference" type="text" class=referenceInput placeholder="Reference"}}
                     </fieldset>
 
-                    <fieldset class="form-group">
+                    <fieldset class="{{surveyorField}}">
                         <label for="editBlockModalSurveyor">
                             Surveyor
                         </label>
 
-                        <select  onchange={{action "changeSurveyor" value="target.value"}} class="form-control" name="editBlockModalSurveyor" id="editBlockModalSurveyor">
+                        <select  onchange={{action "changeSurveyor" value="target.value"}} class="{{surveyorInput}}" name="editBlockModalSurveyor" id="editBlockModalSurveyor">
+                            <option value="">Select Surveyor..</option>
                             {{#each surveyors as |surveyor|}}
-                                <option value="{{surveyor.id}}">{{format-surveyor surveyor}}</option>
+                                <option value="{{surveyor.id}}">{{surveyor.fullName}}</option>
                             {{/each}}
                         </select>
 
