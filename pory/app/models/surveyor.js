@@ -16,8 +16,9 @@ export default DS.Model.extend({
     county: DS.attr('string'),
     postcode: DS.attr('string'),
     rev: DS.attr('string'),
+
     fullName: function()
     {
-        return this.get('firstName') + ' ' + this.get('surname');
+        return `${this.get('firstName')} ${this.get('surname')}`;
     }.property('firstName', 'surname')
 });
